@@ -3,6 +3,7 @@ const db = require('../../db/db.json')
 const router = require('express').Router();
 const uniqid = require('uniqid');
 
+//Get request in api notes if successful sends read file 
 router.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if (err) throw err;
@@ -11,7 +12,7 @@ router.get('/api/notes', (req, res) => {
         res.send(data)
     })
 })
-
+//Post Request to body for new note  
 router.post('/api/notes', (req, res) => {
     let newNote = {
         id: uniqid(),
